@@ -7,7 +7,7 @@
 Though the input system has the ability to traverse through a CSV file, a simple input has been taken into consideration as more or less it will be connected to a database. This feature has been enabled to showcase the prototype.
 
 # You can see all the scripting files in the link below:
-
+*>https://github.com/Saurabhbagh/Assignment/tree/main/LMS/Assets/Scripts
 
 # See a preview of the application 
 To see a preview of the application you can unzip HowTo Run Test Cases.zip and Steps for Checking Functionality.zip files. 
