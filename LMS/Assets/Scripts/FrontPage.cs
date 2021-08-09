@@ -13,12 +13,23 @@ public class FrontPage : MonoBehaviour
     private void Awake()
     {
         Submit.onClick.AddListener(SetUserName);
-
     }
 
     private void SetUserName()
     {
-        UserClass.Instance.setUsername(Name.text);
-        SceneManager.LoadScene("lms");
+        if( Name.text=="")
+        {
+            Name.text = "Cannot have blank Input";
+            return;
+        }
+        else
+        {
+
+            UserClass.Instance.setUsername(Name.text);
+            SceneManager.LoadScene("lms");
+
+        }
+
+        
     }
 }

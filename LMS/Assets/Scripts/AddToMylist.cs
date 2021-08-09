@@ -11,6 +11,7 @@ public class AddToMylist : MonoBehaviour
     // this class is attached to each indivisual book so it can be added to the cart
     //it will take the current user instance and then book the book according to it. 
       public Button addToUserList;
+    public TextMeshProUGUI Text;
        
 
     private void Awake()
@@ -24,14 +25,15 @@ public class AddToMylist : MonoBehaviour
     ///  only one copy of the book can be  with the user 
     ///  to check is there are no books available
     /// </summary>
-    private void AddTheBook()
+    public  void AddTheBook()
     {
-        string name = UserClass.Instance.getUsername();
-        Debug.Log(this.transform.parent.name);
+        //string name = UserClass.Instance.getUsername();
+        Text =GameObject.Find("Error").GetComponent<TextMeshProUGUI>();
+        //Debug.Log(this.transform.parent.name);
         if ( CheckUserBooks() && CopyCheck() && countCheck())
         {
             Debug.Log("User can book ");
-
+            Text.text = "Booked";
             Booking();
         }
 
@@ -39,6 +41,9 @@ public class AddToMylist : MonoBehaviour
         {
 
             Debug.Log("UsercantBook");
+           
+            Text.text = " Cannot Add More books!,Check Your Account";
+
         }
      }
 
@@ -96,7 +101,7 @@ public class AddToMylist : MonoBehaviour
  void Booking ()
     {
         UserClass.Instance._BookDictonary.Add(this.transform.parent.name, 1);
-        LMS.Library.Instance.UserBookRecords.Add(this.transform.parent.name, name);
+        //LMS.Library.Instance.UserBookRecords.Add(this.transform.parent.name, name);
 
         //updating the value
         int Value = LMS.Library.Instance.ReaderDictionary[this.transform.parent.name] - 1;

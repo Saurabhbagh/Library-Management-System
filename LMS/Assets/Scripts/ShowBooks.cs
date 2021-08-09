@@ -9,6 +9,7 @@ using System;
 public class ShowBooks : MonoBehaviour
 {
     public Button showBooks;
+    public Button backButton;
     public GameObject BookList;
     public GameObject Prefabs;
     public GameObject ObjectforReference; // Object for positioning 
@@ -17,10 +18,17 @@ public class ShowBooks : MonoBehaviour
     private void Awake()
     {
         showBooks.onClick.AddListener(Show);
-     }
+        backButton.onClick.AddListener(Lobby);
+    }
+
+    private void Lobby()
+    {
+        SceneManager.LoadScene("User");
+        Destroy(UserClass.Instance); 
+    }
 
     //show books
-    private void Show()
+    public void Show()
     {
         //   Debug.Log(LMS.Library.Instance.ReaderDictionary.Count);
         if (LMS.Library.Instance.ReaderDictionary.Count<1)
@@ -39,8 +47,10 @@ public class ShowBooks : MonoBehaviour
                 {
                     Destroy(child.gameObject);
                     ObjectforReference.transform.localPosition = ValueSender(ObjectforReference.transform, false);
+
                 }
 
+          
 
                 RunShowBook();
             }
@@ -64,7 +74,7 @@ public class ShowBooks : MonoBehaviour
         }
     }
 
-    void ShowOneBook(String BookName, int Count )
+    public void ShowOneBook(String BookName, int Count )
     {
         GameObject Go = Instantiate(Prefabs);
         Go.transform.SetParent(this.transform.GetChild(0)); // the fist chlild is the book list holder, any changes to this will now work properly

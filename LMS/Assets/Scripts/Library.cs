@@ -13,13 +13,13 @@ namespace LMS
 {
     [Header("Get the file")]
     public TextAsset TextFile;
-    public string[,] sampleInput = new string[,] { { "A", "1" }, { "B", "1" }, { "D", "4" } };
+    public string[,] sampleInput = new string[,] { { "1002564", "1" }, { "895451", "1" }, { "326581", "4" } };
      // For global records 
     public static Library Instance;
     public List<LibraryBook> Reader = new List<LibraryBook>();
     [SerializeField]
     public Dictionary<string, int> ReaderDictionary = new Dictionary<string, int>();
-    public Dictionary<string, string> UserBookRecords = new Dictionary<string, string>();    // to see which user has which book
+    public Dictionary<string, List<string>> UserBookRecords = new Dictionary<string, List<string>>();    // to see which user has which book // userid and list of books
 
 
 
